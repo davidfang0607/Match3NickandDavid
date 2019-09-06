@@ -15,6 +15,7 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
 ////                board[r][c] = new Bricks(r,c);
 //            }
 //        }
+        
     }
 
     @Override
