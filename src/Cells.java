@@ -16,6 +16,6 @@ public class Cells {
             }
         }
 
-        return null;
+        return new int[3][4];
     }
 }
