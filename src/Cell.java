@@ -1,12 +1,17 @@
 import java.awt.*;
-public class Cells {
+public class Cell {
     //private boolean exist;
     private int cellValue;
     private int[][] cellValues;
+    private int x,y;
 
-    public Cells(){
+    public Cell(int cellValue, int x, int y){
         //exist = true;
+        this.cellValue = cellValue;
+        this.x = x;
+        this.y = y;
         cellValues = new int[5][5];
+
 
     }
 
@@ -31,7 +36,10 @@ public class Cells {
     }
 
     public void draw(Graphics g2, int x, int y){
-        
+        if(cellValue == 1){
+
+        }
+
     }
 
 
