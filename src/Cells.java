@@ -1,3 +1,4 @@
+import java.awt.*;
 public class Cells {
     //private boolean exist;
     private int cellValue;
@@ -5,7 +6,7 @@ public class Cells {
 
     public Cells(){
         //exist = true;
-        cellValues = new int[10][10];
+        cellValues = new int[5][5];
 
     }
 
@@ -26,8 +27,12 @@ public class Cells {
 //                if cellValues[r][c]
             }
         }
+        return false; //liygiuyxsf
     }
 
+    public void draw(Graphics g2, int x, int y){
+        
+    }
 
 
 }
