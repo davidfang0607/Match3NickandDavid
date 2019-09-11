@@ -4,6 +4,7 @@ public class Cell {
     private int cellValue;
     private int[][] cellValues;
     private int x,y;
+    private int width;
 
     public Cell(int cellValue, int x, int y){
         //exist = true;
@@ -11,33 +12,24 @@ public class Cell {
         this.x = x;
         this.y = y;
         cellValues = new int[5][5];
+        width = 60;
 
-
-    }
-
-    //put random values in cellValues
-    private int[][] randomizeBoard(){
-        for (int r = 0; r < 10; r++) {
-            for (int c = 0; c < 10; c++) {
-                cellValue = (int)(Math.random()*3);
-                cellValues[r][c] = cellValue;
-            }
-        }
-        return cellValues;
-    }
-
-    private boolean check3InRow(){
-        for (int r = 0; r < 10; r++) {
-            for (int c = 0; c < 10; c++) {
-//                if cellValues[r][c]
-            }
-        }
-        return false; //liygiuyxsf
     }
 
     public void draw(Graphics g2, int x, int y){
         if(cellValue == 1){
+            g2.setColor(Color.red);
+            g2.drawRect(x,y,width,width);
+        }
 
+        if(cellValue == 2){
+            g2.setColor(Color.green);
+            g2.drawRect(x,y,width,width);
+        }
+
+        if(cellValue == 3){
+            g2.setColor(Color.blue);
+            g2.drawRect(x,y,width,width);
         }
 
     }
