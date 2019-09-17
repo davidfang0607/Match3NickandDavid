@@ -17,7 +17,7 @@ public class Board {
     private void randomizeBoard(){
         for (int r = 0; r < 10; r++) {
             for (int c = 0; c < 10; c++) {
-                int colorNum = (int)(Math.random()*7)+1;
+                int colorNum = (int)(Math.random()*6)+1;
                 cellArr[r][c] = new Cell(colorNum);
             }
         }
