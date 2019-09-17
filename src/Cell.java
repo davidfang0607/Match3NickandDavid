@@ -1,17 +1,28 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+
 public class Cell {
     //private boolean exist;
-    private int cellValue;
-    private int[][] cellValues;
-    private int x,y;
+    public int cellValue;
+//    private int x,y;
     private int width;
+    private static BufferedImage blue, green, orange, purple, red, yellow;
 
-    public Cell(int cellValue, int x, int y){
+    static{
+        try{
+            blue = ImageIO.read(new File("res/" + "blue bauble.png"));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public Cell(int cellValue){//}, int x, int y){
         //exist = true;
         this.cellValue = cellValue;
-        this.x = x;
-        this.y = y;
-        cellValues = new int[5][5];
+//        this.x = x;
+//        this.y = y;
         width = 60;
 
     }
@@ -19,18 +30,41 @@ public class Cell {
     public void draw(Graphics g2, int x, int y){
         if(cellValue == 1){
             g2.setColor(Color.red);
-            g2.drawRect(x,y,width,width);
+            g2.fillRect(x,y,width,width);
         }
 
         if(cellValue == 2){
             g2.setColor(Color.green);
-            g2.drawRect(x,y,width,width);
+            g2.fillRect(x,y,width,width);
         }
 
         if(cellValue == 3){
-            g2.setColor(Color.blue);
-            g2.drawRect(x,y,width,width);
+//            g2.setColor(Color.blue);
+//            g2.fillRect(x,y,width,width);
+            g2.drawImage(blue, x, y, null);
         }
+
+        if(cellValue == 4){
+            g2.setColor(Color.pink);
+            g2.fillRect(x,y,width,width);
+        }
+
+        if(cellValue == 5){
+            g2.setColor(Color.yellow);
+            g2.fillRect(x,y,width,width);
+        }
+
+        if(cellValue == 6){
+            g2.setColor(Color.orange);
+            g2.fillRect(x,y,width,width);
+        }
+
+        if(cellValue == 7){
+            g2.setColor(Color.magenta);
+            g2.fillRect(x,y,width,width);
+        }
+
+
 
     }
 

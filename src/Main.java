@@ -6,21 +6,34 @@ import java.util.ArrayList;
 public class Main extends JPanel implements ActionListener, KeyListener, MouseListener{
 //    private static Bricks[][] board;
     private int width = 800, height = 800;
+    private Board board;
+    private Point point;
+    private int pressedRow, pressedCol;
+    private int releasedRow, releasedCol;
 
     public Main(int w, int h) {
         setSize(w,h);
+        board = new Board();
+        addMouseListener(this);
+
+        pressedCol = -1;
+        pressedRow = -1;
+
 //        board = new Bricks[20][20];
 //        for (int r = 0; r < board.length; r++) {
 //            for (int c = 0; c < board[0].length; c++) {
 ////                board[r][c] = new Bricks(r,c);
 //            }
 //        }
+
         
     }
 
     @Override
     public void paintComponent(Graphics g) {
-
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        board.draw(g2);
     }
 
     @Override
@@ -44,18 +57,30 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
     }
 
     @Override
-    public void mouseClicked(MouseEvent mouseEvent) {
+    public void mouseClicked(MouseEvent e) {
 
     }
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
+        int x= mouseEvent.getX();
+        int y= mouseEvent.getY();
 
+        pressedCol = (x/60) - 2;
+        pressedRow = (y/60) - 2;
+
+        System.out.println(pressedCol+","+pressedRow);
     }
 
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
+        int x= mouseEvent.getX();
+        int y= mouseEvent.getY();
 
+        releasedCol = (x/60) - 2;
+        releasedRow = (y/60) - 2;
+
+        System.out.println(releasedCol+","+ releasedRow);
     }
 
     @Override
