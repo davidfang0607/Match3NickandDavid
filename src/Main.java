@@ -19,6 +19,9 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
         pressedCol = -1;
         pressedRow = -1;
 
+        releasedRow = -1;
+        releasedCol = -1;
+
 //        board = new Bricks[20][20];
 //        for (int r = 0; r < board.length; r++) {
 //            for (int c = 0; c < board[0].length; c++) {
@@ -80,8 +83,11 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
         releasedCol = (x/60) - 2;
         releasedRow = (y/60) - 2;
 
-        System.out.println(releasedCol+","+ releasedRow);
+        board.swap(pressedRow,pressedCol,releasedRow,releasedCol);
+        System.out.println(releasedRow+","+ releasedCol);
+        repaint();
     }
+
 
     @Override
     public void mouseEntered(MouseEvent mouseEvent) {

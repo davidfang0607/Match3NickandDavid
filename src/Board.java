@@ -4,6 +4,7 @@ public class Board {
     private int widthBoard;
     private int x,y;
     private int pressedRow, pressedCol;
+    private int r1,c1,r2,c2;
 
 
     public Board(){
@@ -11,6 +12,10 @@ public class Board {
         randomizeBoard();
         pressedCol = -1;
         pressedRow = -1;
+        this.r1 = r1;
+        this.r2 = r2;
+        this.c1 = c1;
+        this.c2 = c2;
     }
 
     //put random values in cellValues
@@ -33,7 +38,11 @@ public class Board {
 //    }
 
 
-
+    public void swap(int r1, int c1, int r2, int c2){
+        int temp = cellArr[r1][c1].cellValue;
+        cellArr[r1][c1].cellValue = cellArr[r2][c2].cellValue;
+        cellArr[r2][c2].cellValue = temp;
+    }
 
 
 
@@ -44,7 +53,7 @@ public class Board {
         for (int r = 0; r < cellArr.length; r++) {
             for (int c = 0; c < cellArr[0].length; c++) {
                 cellArr[r][c].draw(g2,100+c*60,100+r*60);
-                System.out.println("draw " + r + c);
+//                System.out.println("draw " + r + c);
             }
         }
 

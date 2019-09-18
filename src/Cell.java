@@ -49,7 +49,6 @@ public class Cell {
 //        this.x = x;
 //        this.y = y;
         width = 60;
-
     }
 
     public void draw(Graphics g2, int x, int y){
