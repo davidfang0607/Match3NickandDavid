@@ -85,6 +85,10 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
 
         board.swap(pressedRow,pressedCol,releasedRow,releasedCol);
         System.out.println(releasedRow+","+ releasedCol);
+
+        board.check();
+        System.out.println(board.check());
+
         repaint();
     }
 

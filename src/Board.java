@@ -5,6 +5,7 @@ public class Board {
     private int x,y;
     private int pressedRow, pressedCol;
     private int r1,c1,r2,c2;
+    private int i,j;
 
 
     public Board(){
@@ -16,6 +17,8 @@ public class Board {
         this.r2 = r2;
         this.c1 = c1;
         this.c2 = c2;
+        this.i  = i;
+        this.j  = j;
     }
 
     //put random values in cellValues
@@ -44,7 +47,25 @@ public class Board {
         cellArr[r2][c2].cellValue = temp;
     }
 
-
+    public boolean check(){
+        for (int r = 0; r < 10; r++) {
+            for (int c = 0; c < 10; c++) {
+                if ((cellArr[r][c].cellValue == cellArr[r + 1][c].cellValue && cellArr[r + 1][c].cellValue == cellArr[r + 2][c].cellValue)) {
+                    return true;
+                }
+                if ((cellArr[r][c].cellValue == cellArr[r - 1][c].cellValue && cellArr[r - 1][c].cellValue == cellArr[r - 2][c].cellValue)) {
+                    return true;
+                }
+                if ((cellArr[r][c].cellValue == cellArr[r][c + 1].cellValue && cellArr[r][c + 1].cellValue == cellArr[r][c + 2].cellValue)) {
+                    return true;
+                }
+                if ((cellArr[r][c].cellValue == cellArr[r][c - 1].cellValue && cellArr[r][c - 1].cellValue == cellArr[r][c - 2].cellValue)) {
+                    return true;
+                }
+            }
+        }
+            return false;
+    }
 
     public void draw(Graphics g2){
         Graphics2D g = (Graphics2D)(g2);
