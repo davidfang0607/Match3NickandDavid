@@ -27,6 +27,25 @@ public class Board {
             for (int c = 0; c < 10; c++) {
                 int colorNum = (int)(Math.random()*6)+1;
                 cellArr[r][c] = new Cell(colorNum);
+
+            }
+        }
+        for (int r = 2; r < 10; r++) {
+            for (int c = 0; c < 10; c++) {
+                if (cellArr[r][c].cellValue == cellArr[r-1][c].cellValue){
+                    if(cellArr[r][c].cellValue == cellArr[r-2][c].cellValue){
+                        cellArr[r][c].cellValue = (int)(Math.random()*6)+1;
+                    }
+                }
+            }
+        }
+        for (int r = 0; r < 10; r++) {
+            for (int c = 2; c < 10; c++) {
+                if (cellArr[r][c].cellValue == cellArr[r][c-1].cellValue){
+                    if(cellArr[r][c].cellValue == cellArr[r][c-2].cellValue){
+                        cellArr[r][c].cellValue = (int)(Math.random()*6)+1;
+                    }
+                }
             }
         }
     }
