@@ -73,23 +73,30 @@ public class Board {
     }
 
     public boolean check(){
-        for (int r = 0; r < 10; r++) {
-            for (int c = 0; c < 10; c++) {
-                if ((cellArr[r][c].cellValue == cellArr[r + 1][c].cellValue && cellArr[r + 1][c].cellValue == cellArr[r + 2][c].cellValue)) {
+        for (int r = 0; r < cellArr.length; r++) {
+            for (int c = 0; c < cellArr[0].length; c++) {
+
+
+
+
+
+                if (r+2 <= 9 && (cellArr[r][c].cellValue == cellArr[r + 1][c].cellValue && cellArr[r + 1][c].cellValue == cellArr[r + 2][c].cellValue)) {
                     return true;
                 }
-                if ((cellArr[r][c].cellValue == cellArr[r - 1][c].cellValue && cellArr[r - 1][c].cellValue == cellArr[r - 2][c].cellValue)) {
+                if ( r-2 >= 0 && (cellArr[r][c].cellValue == cellArr[r - 1][c].cellValue && cellArr[r - 1][c].cellValue == cellArr[r - 2][c].cellValue)) {
                     return true;
                 }
-                if ((cellArr[r][c].cellValue == cellArr[r][c + 1].cellValue && cellArr[r][c + 1].cellValue == cellArr[r][c + 2].cellValue)) {
+                if (c +2 <= 9 && (cellArr[r][c].cellValue == cellArr[r][c + 1].cellValue && cellArr[r][c + 1].cellValue == cellArr[r][c + 2].cellValue)) {
                     return true;
                 }
-                if ((cellArr[r][c].cellValue == cellArr[r][c - 1].cellValue && cellArr[r][c - 1].cellValue == cellArr[r][c - 2].cellValue)) {
+                if (c-2 >= 0 && (cellArr[r][c].cellValue == cellArr[r][c - 1].cellValue && cellArr[r][c - 1].cellValue == cellArr[r][c - 2].cellValue)) {
                     return true;
                 }
+
             }
         }
-            return false;
+
+        return false;
     }
 
     public void draw(Graphics g2){

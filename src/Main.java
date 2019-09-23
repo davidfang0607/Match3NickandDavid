@@ -83,6 +83,7 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
         releasedCol = (x/60) - 2;
         releasedRow = (y/60) - 2;
 
+
         board.swap(pressedRow,pressedCol,releasedRow,releasedCol);
         System.out.println(releasedRow+","+ releasedCol);
 
