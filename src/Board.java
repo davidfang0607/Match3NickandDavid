@@ -32,22 +32,28 @@ public class Board {
         }
         for (int r = 2; r < 10; r++) {
             for (int c = 0; c < 10; c++) {
-                if (cellArr[r][c].cellValue == cellArr[r-1][c].cellValue){
-                    if(cellArr[r][c].cellValue == cellArr[r-2][c].cellValue){
-                        cellArr[r][c].cellValue = (int)(Math.random()*6)+1;
-                    }
+                if (cellArr[r][c].cellValue == cellArr[r-1][c].cellValue&&cellArr[r][c].cellValue == cellArr[r-2][c].cellValue){
+                        cellArr[r][c].cellValue = newValue(cellArr[r-2][c].cellValue);
                 }
+
             }
         }
         for (int r = 0; r < 10; r++) {
             for (int c = 2; c < 10; c++) {
-                if (cellArr[r][c].cellValue == cellArr[r][c-1].cellValue){
-                    if(cellArr[r][c].cellValue == cellArr[r][c-2].cellValue){
-                        cellArr[r][c].cellValue = (int)(Math.random()*6)+1;
+                if (cellArr[r][c].cellValue == cellArr[r][c-1].cellValue&&cellArr[r][c].cellValue == cellArr[r][c-2].cellValue){
+                        cellArr[r][c].cellValue= newValue(cellArr[r][c-2].cellValue);
                     }
                 }
             }
         }
+
+
+    private int newValue(int undesirable){
+        int newColor= (int)(Math.random()*6)+1;
+        if(newColor == undesirable){
+            newValue(undesirable);
+        }
+        return newColor;
     }
 
 //    private boolean check3InRow(){
