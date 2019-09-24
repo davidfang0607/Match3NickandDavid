@@ -29,9 +29,9 @@ public class Board {
             for (int c = 0; c < 10; c++) {
                 int colorNum = (int)(Math.random()*6)+1;
                 cellArr[r][c] = new Cell(colorNum);
-
             }
         }
+        System.out.println(cellArr[3][3].cellValue);
         for (int r = 2; r < 10; r++) {
             for (int c = 0; c < 10; c++) {
                 if (cellArr[r][c].cellValue == cellArr[r-1][c].cellValue&&cellArr[r][c].cellValue == cellArr[r-2][c].cellValue){
@@ -44,16 +44,31 @@ public class Board {
             for (int c = 2; c < 10; c++) {
                 if (cellArr[r][c].cellValue == cellArr[r][c-1].cellValue&&cellArr[r][c].cellValue == cellArr[r][c-2].cellValue){
                         cellArr[r][c].cellValue= newValue(cellArr[r][c-2].cellValue);
-                    }
                 }
             }
         }
+        for (int r = 2; r < 10; r++) {
+            for (int c = 2; c < 10; c++) {
+                if (cellArr[r][c].cellValue == cellArr[r][c-1].cellValue&&cellArr[r][c].cellValue == cellArr[r][c-2].cellValue&&
+                        cellArr[r][c].cellValue == cellArr[r-1][c].cellValue&&cellArr[r][c].cellValue == cellArr[r-2][c].cellValue){
+                    cellArr[r][c].cellValue = newValue(cellArr[r][c-2].cellValue, cellArr[r-2][c].cellValue);
+                }
+            }
+        }
+    }
 
 
     private int newValue(int undesirable){
         int newColor= (int)(Math.random()*6)+1;
         if(newColor == undesirable){
             newValue(undesirable);
+        }
+        return newColor;
+    }
+    private int newValue(int undesirable, int undesirable2){
+        int newColor= (int)(Math.random()*6)+1;
+        if(newColor == undesirable || newColor == undesirable2){
+            newValue(undesirable, undesirable2);
         }
         return newColor;
     }
