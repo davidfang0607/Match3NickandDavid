@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.util.ArrayList;
+
 public class Board {
     private Cell[][] cellArr;
     private int widthBoard;
@@ -72,7 +74,12 @@ public class Board {
         cellArr[r2][c2].cellValue = temp;
     }
 
-    public boolean check(){
+    public void clear(ArrayList<Point> p){
+
+    }
+
+    public Point check(){
+
         for (int r = 0; r < cellArr.length; r++) {
             for (int c = 0; c < cellArr[0].length; c++) {
 
@@ -81,23 +88,32 @@ public class Board {
 
 
                 if (r+2 <= 9 && (cellArr[r][c].cellValue == cellArr[r + 1][c].cellValue && cellArr[r + 1][c].cellValue == cellArr[r + 2][c].cellValue)) {
-                    return true;
+                    cellArr[r][c].cellValue = 0;
+                    cellArr[r+1][c].cellValue = 0;
+                    cellArr[r+2][c].cellValue = 0;
                 }
                 if ( r-2 >= 0 && (cellArr[r][c].cellValue == cellArr[r - 1][c].cellValue && cellArr[r - 1][c].cellValue == cellArr[r - 2][c].cellValue)) {
-                    return true;
+                    cellArr[r][c].cellValue = 0;
+                    cellArr[r-1][c].cellValue = 0;
+                    cellArr[r-2][c].cellValue = 0;
                 }
                 if (c +2 <= 9 && (cellArr[r][c].cellValue == cellArr[r][c + 1].cellValue && cellArr[r][c + 1].cellValue == cellArr[r][c + 2].cellValue)) {
-                    return true;
+                    cellArr[r][c].cellValue = 0;
+                    cellArr[r][c+1].cellValue = 0;
+                    cellArr[r][c+2].cellValue = 0;
                 }
                 if (c-2 >= 0 && (cellArr[r][c].cellValue == cellArr[r][c - 1].cellValue && cellArr[r][c - 1].cellValue == cellArr[r][c - 2].cellValue)) {
-                    return true;
+                    cellArr[r][c].cellValue = 0;
+                    cellArr[r][c-1].cellValue = 0;
+                    cellArr[r][c-2].cellValue = 0;
                 }
 
             }
         }
 
-        return false;
+        return null;
     }
+
 
     public void draw(Graphics g2){
         Graphics2D g = (Graphics2D)(g2);
