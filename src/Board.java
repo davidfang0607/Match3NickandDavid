@@ -8,6 +8,7 @@ public class Board {
     private int pressedRow, pressedCol;
     private int r1,c1,r2,c2;
     private int i,j;
+    private int r3,c3,r4,c4;
 
 
     public Board(){
@@ -19,6 +20,10 @@ public class Board {
         this.r2 = r2;
         this.c1 = c1;
         this.c2 = c2;
+        this.r3 = r3;
+        this.r4 = r4;
+        this.c3 = c3;
+        this.c4 = c4;
         this.i  = i;
         this.j  = j;
     }
@@ -93,6 +98,12 @@ public class Board {
 
     }
 
+    public void drop(int r3, int c3, int r4, int c4){
+        cellArr[r3][c3].cellValue = cellArr[r4][c4].cellValue;
+    }
+
+
+
     public Point check(){
 
         for (int r = 0; r < cellArr.length; r++) {
@@ -103,24 +114,67 @@ public class Board {
 
 
                 if (r+2 <= 9 && (cellArr[r][c].cellValue == cellArr[r + 1][c].cellValue && cellArr[r + 1][c].cellValue == cellArr[r + 2][c].cellValue)) {
-                    cellArr[r][c].cellValue = 0;
-                    cellArr[r+1][c].cellValue = 0;
-                    cellArr[r+2][c].cellValue = 0;
+//                    if(c!=0) {
+                        cellArr[r][c].cellValue = cellArr[r][c - 1].cellValue;
+                        cellArr[r + 1][c].cellValue = cellArr[r + 1][c - 1].cellValue;
+                        cellArr[r + 2][c].cellValue = cellArr[r + 2][c - 1].cellValue;
+//                    }else{
+//                        cellArr[r][c].cellValue = (int)Math.random()*7;
+//                        cellArr[r + 1][c].cellValue = (int)Math.random()*7;
+//                        cellArr[r + 2][c].cellValue = (int)Math.random()*7;
+//                    }
+
+//                    if(c!=0){
+//                        drop(r,c,r,c-1);
+//                        drop(r+1,c,r+1,c-1);
+//                        drop(r+2,c,r+2,c-1);
+//                    }
                 }
                 if ( r-2 >= 0 && (cellArr[r][c].cellValue == cellArr[r - 1][c].cellValue && cellArr[r - 1][c].cellValue == cellArr[r - 2][c].cellValue)) {
-                    cellArr[r][c].cellValue = 0;
-                    cellArr[r-1][c].cellValue = 0;
-                    cellArr[r-2][c].cellValue = 0;
+//                    if(c!=0) {
+                        cellArr[r][c].cellValue = cellArr[r][c-1].cellValue;
+                        cellArr[r - 1][c].cellValue = cellArr[r-1][c-1].cellValue;
+                        cellArr[r - 2][c].cellValue = cellArr[r-2][c-1].cellValue;
+//                    }else{
+//                        cellArr[r][c].cellValue = (int)Math.random()*7;
+//                        cellArr[r - 1][c].cellValue = (int)Math.random()*7;
+//                        cellArr[r - 2][c].cellValue = (int)Math.random()*7;
+//                    }
+//                    if(c!=0){
+//                        drop(r,c,r,c-1);
+//                        drop(r-1,c,r-1,c-1);
+//                        drop(r-2,c,r-2,c-1);
+//                    }
                 }
                 if (c +2 <= 9 && (cellArr[r][c].cellValue == cellArr[r][c + 1].cellValue && cellArr[r][c + 1].cellValue == cellArr[r][c + 2].cellValue)) {
-                    cellArr[r][c].cellValue = 0;
-                    cellArr[r][c+1].cellValue = 0;
-                    cellArr[r][c+2].cellValue = 0;
+//                    if(c>=3) {
+                        cellArr[r][c].cellValue = cellArr[r][c - 3].cellValue;
+                        cellArr[r][c + 1].cellValue = cellArr[r][c - 2].cellValue;
+                        cellArr[r][c + 2].cellValue = cellArr[r][c - 1].cellValue;
+//                    }else if (c==0){
+//                        cellArr[r][c].cellValue = (int)Math.random()*7;
+//                        cellArr[r][c+1].cellValue = (int)Math.random()*7;
+//                        cellArr[r][c+2].cellValue = (int)Math.random()*7;
+//                    }else if (c==1){
+//                        cellArr[r][c].cellValue = (int)Math.random()*7;
+//                        cellArr[r][c+1].cellValue = (int)Math.random()*7;
+//                        cellArr[r][c+2].cellValue = cellArr[r][c-1].cellValue;
+//                    }
+//                    if(c-4!=0){
+//                        drop(r,c,r,c-3);
+//                        drop(r,c+1,r,c-3);
+//                        drop(r,c+2,r,c-3);
+//                    }
                 }
                 if (c-2 >= 0 && (cellArr[r][c].cellValue == cellArr[r][c - 1].cellValue && cellArr[r][c - 1].cellValue == cellArr[r][c - 2].cellValue)) {
                     cellArr[r][c].cellValue = 0;
                     cellArr[r][c-1].cellValue = 0;
                     cellArr[r][c-2].cellValue = 0;
+//                    if(c-4!=0){
+//                        drop(r,c,r,c-3);
+//                        drop(r,c-1,r,c-3);
+//                        drop(r,c-2,r,c-3);
+//                    }
                 }
 
             }
